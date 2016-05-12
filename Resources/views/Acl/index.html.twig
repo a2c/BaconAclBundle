@@ -1,0 +1,20 @@
+{% extends 'BaconCoreBundle::layout.html.twig' %}
+{% block body %}
+<section class="content-header">
+    <h1>
+        {{ 'Acl'|trans }}
+        <small>{{ 'Atribuir'|trans }}</small>
+    </h1>
+    {{ bacon_breadcrumbs_render() }}
+</section>
+<section class="content">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            {% include 'BaconCoreBundle:partial:message.html.twig' %}
+        </div>
+        <div class="box-body">
+            {% include 'BaconUserBundle:Partial:accordion.html.twig' %}
+        </div>
+    </div>
+</section>
+{% endblock body %}

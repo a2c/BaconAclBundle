@@ -1,0 +1,19 @@
+{
+    "name": "baconmanager/acl-bundle",
+    "description": "This bundle of symfony2",
+    "keywords": ["Acl","UserBundle","Group","Permission"],
+    "type": "symfony-bundle",
+    "license":      "MIT",
+    "authors": [
+        {
+            "name": "Adan Felipe Medeiros",
+            "email": "adan.grg@gmail.com"
+        }
+    ],
+    "require": {
+        "baconmanager/core-bundle": "dev-master"
+    },
+    "autoload": {
+        "psr-4": { "Bacon\\Bundle\\AclBundle\\": "" }
+    }
+}

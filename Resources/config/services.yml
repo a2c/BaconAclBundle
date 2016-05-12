@@ -1,0 +1,12 @@
+services:
+    bacon_acl.acl_extension:
+        class: Bacon\Bundle\AclBundle\Twig\Extension\AclExtension
+        arguments: [ "@service_container" ]
+        tags : [ name: "twig.extension" ]
+
+    bacon_acl.service.authorization:
+        class: Bacon\Bundle\AclBundle\Service\AuthorizationService
+        arguments: ["@security.token_storage"]
+        calls:
+          - [ setDoctrine, ["@doctrine"]]
+          - [ setModuleActionsGroup, ["%bacon_acl.entities.module_actions_group%"]]

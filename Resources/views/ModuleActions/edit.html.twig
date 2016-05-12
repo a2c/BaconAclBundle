@@ -1,0 +1,52 @@
+{% extends 'BaconCoreBundle::layout.html.twig' %}
+
+{% block body -%}
+<section class="content-header">
+    <h1>
+        {{ 'ModuleActions'|trans }}
+        <small>{{ 'Edit'|trans }}</small>
+    </h1>
+    {{ bacon_breadcrumbs_render() }}
+</section>
+
+<section class="content">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <section class="row">
+                <div class="col-lg-4">
+                    <div class="btn-group">
+                        <a href="{{ path('module_actions') }}" class="btn btn-default">
+                            <span class="glyphicon glyphicon-th-list"></span>
+                            {{ 'List'|trans }}
+                        </a>
+                        <a href="{{ path('module_actions_new') }}" class="btn btn-success">
+                            <span class="glyphicon glyphicon-plus"></span>
+                            {{ 'New'|trans }}
+                        </a>
+                        <button type="button" class="btn btn-danger" title="" data-target="#modalDelete{{ entity.id }}" data-toggle="modal">
+                            <span class="glyphicon glyphicon-remove"></span> {{ 'Remove'|trans }}
+                        </button>
+                        {% embed 'BaconCoreBundle:partial:modalDelete.html.twig' with {
+                            form: delete_form,
+                            route: 'module_actions_delete',
+                            id: entity.id
+                        } %} 
+                        {% endembed %}
+                    </div>
+                </div>
+            </section>
+            {% include 'BaconCoreBundle:partial:message.html.twig' %}
+        </div>
+        {{ form_start(form, {action : path('module_actions_edit',{ id: entity.id}) }) }}
+            <div class="box-body">
+                {{ form_widget(form) }}
+            </div>
+
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> {{ 'Submit'|trans }}</button>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</section>
+
+{% endblock %}
