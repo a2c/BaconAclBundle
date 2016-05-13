@@ -12,9 +12,14 @@
         <div class="box-header with-border">
             {% include 'BaconCoreBundle:partial:message.html.twig' %}
         </div>
-        <div class="box-body">
-            {% include 'BaconUserBundle:Partial:accordion.html.twig' %}
-        </div>
+        <form action="{{ path('acl_post') }}" method="post">
+            <div class="box-body">
+                {% include 'BaconAclBundle:Partial:accordion.html.twig' %}
+            </div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-floppy-disk"></span> {{ 'Submit'|trans }}</button>
+            </div>
+        </form>
     </div>
 </section>
 {% endblock body %}

@@ -35,7 +35,7 @@ class AclController extends AdminController
         $group  = $this->getDoctrine()->getRepository($groupClassName)->findOneBy(array('name' => urldecode($groupName)));
 
         return [
-            'module' => $module,
+            'modules' => $module,
             'group'  => $group
         ];
     }
