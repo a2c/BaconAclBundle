@@ -217,7 +217,7 @@ class ModuleController extends AdminController
      * @Security("has_role('ROLE_ADMIN')")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, Module $entity)
+    public function deleteAction(Module $entity)
     {
         $handler = new ModuleFormHandler(
             $this->createDeleteForm('module_delete', $entity),

@@ -208,7 +208,7 @@ class ModuleActionsController extends AdminController
      * @Security("has_role('ROLE_ADMIN')")
      * @Template()
      */
-    public function showAction(Request $request, $id)
+    public function showAction($id)
     {
         $entity = $this->getRepository()->find($id);
 
@@ -243,7 +243,7 @@ class ModuleActionsController extends AdminController
      * @Security("has_role('ROLE_ADMIN')")
      * @Method("DELETE")
      */
-    public function deleteAction(Request $request, $id)
+    public function deleteAction($id)
     {
         $formHandlerName    =   $this->getParameter('bacon_acl.forms.module_actions_form_handler_class');
 
