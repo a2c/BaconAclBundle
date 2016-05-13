@@ -449,5 +449,4 @@ class ModuleActionsGroupRepository extends EntityRepository implements ModuleAct
 {
     use HasAuthorationRepository;
 }
-
 ```
