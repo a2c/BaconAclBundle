@@ -52,14 +52,12 @@ bacon_acl:
 Alterar a configuração do bundle FOSUserBundle
 
 ```yaml
-fos_user_group:
-    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
-    prefix: /admin/group
-    
-bacon_acl_module:
-    resource: "@BaconAclBundle/Controller/"
-    type:     annotation
-    prefix:   /admin/    
+fos_user:
+    db_driver: orm 
+    firewall_name: admin
+    user_class: Bacon\Custom\UserBundle\Entity\User
+    group:
+        group_class: Bacon\Custom\UserBundle\Entity\Group
 ```
 
 ## Registrando as Rotas
@@ -67,12 +65,15 @@ bacon_acl_module:
 Adicionar no arquivo **app/config/routing.yml**
 
 ```yaml
-fos_user:
-    db_driver: orm 
-    firewall_name: admin
-    user_class: Bacon\Custom\UserBundle\Entity\User
-    group:
-        group_class: Bacon\Custom\UserBundle\Entity\Group
+fos_user_group:
+    resource: "@FOSUserBundle/Resources/config/routing/group.xml"
+    prefix: /admin/group
+    
+bacon_acl_module:
+    resource: "@BaconAclBundle/Controller/"
+    type:     annotation
+    prefix:   /admin/        
+    
 ```
 
 
