@@ -11,7 +11,7 @@
         }
     ],
     "require": {
-        "baconmanager/core-bundle": "dev-master"
+        "baconmanager/core-bundle": "1.1"
     },
     "autoload": {
         "psr-4": { "Bacon\\Bundle\\AclBundle\\": "" }

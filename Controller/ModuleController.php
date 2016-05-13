@@ -3,13 +3,11 @@
 namespace Bacon\Bundle\AclBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Bacon\Bundle\CoreBundle\Controller\AdminController;
-use Bacon\Bundle\CoreBundle\Office\PHPExcel as PHPOfficeExcel;
 use Bacon\Bundle\AclBundle\Entity\Module;
 use Bacon\Bundle\AclBundle\Form\Type\ModuleFormType;
 use Bacon\Bundle\AclBundle\Form\Handler\ModuleFormHandler;
@@ -127,7 +125,7 @@ class ModuleController extends AdminController
                 $this->get('session')->getFlashBag()
             );
 
-            if ($entity = $handler->save()) {
+            if ($handler->save()) {
                 return $this->redirect($this->generateUrl('module'));
             }
         }

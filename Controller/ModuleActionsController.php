@@ -136,7 +136,7 @@ class ModuleActionsController extends AdminController
                 $this->get('session')->getFlashBag()
             );
 
-            if ($entity = $handler->save()) {
+            if ($handler->save()) {
                 return $this->redirect($this->generateUrl('module_actions'));
             }
         }

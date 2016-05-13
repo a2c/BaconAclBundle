@@ -89,11 +89,12 @@ class AclController extends AdminController
                     $objSave->setEnabled(true);
 
                     $this->getDoctrine()->getManager()->persist($objSave);
-                    $this->getDoctrine()->getManager()->flush();
 
                     unset($objSave);
                     unset($actionTemp);
                 }
+
+                $this->getDoctrine()->getManager()->flush();
             }
         }
         
