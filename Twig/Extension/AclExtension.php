@@ -59,7 +59,7 @@ class AclExtension extends \Twig_Extension
 
             $htmlReturn .= '
                 <div class="checkbox">
-                    <label>
+                    <label style="padding-left: 18px">
                         <input type="checkbox" value="'. $action->getId() .'" name="actions_name['.$action->getId().']" '.$checked.' />
                         '. $action->getName() .'
                     </label>
