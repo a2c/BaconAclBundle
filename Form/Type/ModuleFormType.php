@@ -17,10 +17,12 @@ class ModuleFormType extends AbstractType
         if ($options['search']) {
             $builder
                 ->add('name')->setRequired(false)
+                ->add('slug')->setRequired(false)
             ;
         } else {
             $builder
                 ->add('name')
+                ->add('slug')
             ;
         }
     }

@@ -10,6 +10,9 @@ namespace Bacon\Bundle\AclBundle\Model;
  */
 interface ModuleActionsGroupInterface
 {
+    /**
+     * @return mixed
+     */
     public function getEnabled();
 
     /**

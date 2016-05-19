@@ -24,6 +24,13 @@ class Module extends BaseEntity implements ModuleInterface
     private $name;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="slug", type="string", length=120, nullable=false)
+     */
+    private $slug;
+
+    /**
      * @return string
      */
     public function getName()
@@ -38,6 +45,24 @@ class Module extends BaseEntity implements ModuleInterface
     public function setName($name)
     {
         $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * @param string $slug
+     * @return Module
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
         return $this;
     }
 

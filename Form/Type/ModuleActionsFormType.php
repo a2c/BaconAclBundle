@@ -36,7 +36,7 @@ class ModuleActionsFormType extends AbstractType
                 ->add('name')
                 ->add('identifier', null, [
                     'attr' => [
-                        'placeholder' => 'Este campo deve conter as actions do modulo exemplo: INDEX, NEW, EDIT, DELETE'
+                        'placeholder' => 'Este campo deve conter as actions do modulo exemplo: INDEX, NEW, EDIT, SHOW, DELETE'
                     ]
                 ])
             ;
