@@ -27,6 +27,12 @@ class ModuleActionsController extends AdminController
      */
     public function indexAction($page, $sort, $direction)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('module-actions', 'INDEX')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $breadcumbs = $this->container->get('bacon_breadcrumbs');
 
         $breadcumbs->addItem([
@@ -81,6 +87,12 @@ class ModuleActionsController extends AdminController
     */
     public function searchAction(Request $request)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('module-actions', 'INDEX')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $this->get('session')->remove('moduleactions_search_session');
 
         if ($request->getMethod() === Request::METHOD_POST) {
@@ -109,6 +121,12 @@ class ModuleActionsController extends AdminController
      */
     public function newAction(Request $request)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('module-actions', 'NEW')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $entityName         =   $this->getParameter('bacon_acl.entities.module_actions');
         $formTypeName       =   $this->getParameter('bacon_acl.forms.module_actions_form_type_class');
         $formHandlerName    =   $this->getParameter('bacon_acl.forms.module_actions_form_handler_class');
@@ -156,6 +174,12 @@ class ModuleActionsController extends AdminController
      */
     public function editAction(Request $request, $id)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('module-actions', 'EDIT')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $formTypeName       =   $this->getParameter('bacon_acl.forms.module_actions_form_type_class');
         $formHandlerName    =   $this->getParameter('bacon_acl.forms.module_actions_form_handler_class');
 
@@ -210,6 +234,12 @@ class ModuleActionsController extends AdminController
      */
     public function showAction($id)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('module-actions', 'SHOW')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $entity = $this->getRepository()->find($id);
 
         if (!$entity) {
@@ -245,6 +275,12 @@ class ModuleActionsController extends AdminController
      */
     public function deleteAction($id)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('module-actions', 'DELETE')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $formHandlerName    =   $this->getParameter('bacon_acl.forms.module_actions_form_handler_class');
 
         $entity = $this->getRepository()->find($id);

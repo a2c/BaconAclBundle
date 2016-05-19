@@ -28,6 +28,12 @@ class AclController extends AdminController
      */
     public function indexAction($groupName)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('acl', 'ACL')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $groupClassName     =   $this->getParameter('bacon_acl.group_class');
         $moduleClassName    =   $this->getParameter('bacon_acl.entities.module_class');
 
@@ -49,6 +55,12 @@ class AclController extends AdminController
      */
     public function postAclAction(Request $request)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('acl', 'ACL')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $data = $request->request->all();
 
         $groupNameClass                 =   $this->getParameter('bacon_acl.group_class');

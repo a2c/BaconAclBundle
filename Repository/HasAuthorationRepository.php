@@ -30,7 +30,7 @@ trait HasAuthorationRepository
         $queryBuilder->innerJoin('mag.moduleActions', 'ma');
 
         $queryBuilder->andWhere(
-            $queryBuilder->expr()->eq('m.name', ':module')
+            $queryBuilder->expr()->eq('m.slug', ':module')
         );
 
         $queryBuilder->andWhere(

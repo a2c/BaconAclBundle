@@ -49,8 +49,7 @@ class ModuleActionsFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'search'     => false,
-            'data_class' => 'AppBundle\Entity\ModuleActions'
+            'search'     => false
         ));
     }
 
