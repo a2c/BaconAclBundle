@@ -26,11 +26,12 @@ class AclExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction('bacon_acl_actions', [$this, 'getActionsToModule'], ['is_safe' => array('html')]),
+            new \Twig_SimpleFunction('bacon_acl_authorization', [$this, 'validateViewHasAuthorization']),
         ];
     }
 
     /**
-     * @param Module $module
+     * @param Module         $module
      * @param GroupInterface $group
      *
      * @return string
@@ -91,10 +92,45 @@ class AclExtension extends \Twig_Extension
     }
 
     /**
+     * @param string $module
+     * @param string $action
+     */
+    public function validateViewHasAuthorization($module, $action)
+    {
+        $user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $moduleActionsGroupNameClass    =   $this->container->getParameter('bacon_acl.entities.module_actions_group');
+
+        foreach ($user->getGroups() as $group) {
+            $return = $this
+                ->getRepositoryModuleActionsGroup()
+                ->hasAuthorization($module, $action, $group)
+            ;
+
+            if (!is_null($return)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getName()
     {
         return 'bacon_acl_extension';
+    }
+
+    /**
+     * @return \Doctrine\Common\Persistence\ObjectRepository
+     */
+    private function getRepositoryModuleActionsGroup()
+    {
+        $moduleActionsGroupNameClass    =   $this->container->getParameter('bacon_acl.entities.module_actions_group');
+
+        $doctrine = $this->container->get('doctrine');
+
+        return $doctrine->getRepository($moduleActionsGroupNameClass);
     }
 }

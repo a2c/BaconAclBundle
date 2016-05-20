@@ -69,6 +69,10 @@ class AclController extends AdminController
         $moduleActionsGroupNameClass    =   $this->getParameter('bacon_acl.entities.module_actions_group');
 
         if (isset($data['group_id'])) {
+
+            $cache = $this->get('doctrine.orm.default_result_cache');
+            $cache->deleteAll();
+
             $group = $this->getDoctrine()->getRepository($groupNameClass)->find($data['group_id']);
 
             $acls  = $this
