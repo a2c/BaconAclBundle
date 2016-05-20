@@ -62,7 +62,7 @@
                                             <a href="{{ path('module_actions_edit', { 'id': entity.id }) }}" class="btn btn-sm btn-default" data-original-title="{{ 'Edit'|trans }}">
                                                 <span class="glyphicon glyphicon-pencil"></span>
                                             </a>
-                                        {% endi %}
+                                        {% endif %}
                                         {% if (bacon_acl_authorization('module-actions', 'DELETE') == true) %}
                                             <button type="button" class="btn btn-sm btn-danger" title="" data-target="#modalDelete{{ entity.id }}" data-toggle="modal" data-original-title="{{ 'Remove'|trans }}">
                                                 <span class="glyphicon glyphicon-remove"></span>
