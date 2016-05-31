@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="pt-BR" target-language="pt" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="d740ec45faa5dde148d59cf627722130" resname="Acl">
+        <source>Acl</source>
+        <target>Acl</target>
+      </trans-unit>
+      <trans-unit id="90385e949fb2e34d39876cfd55858954" resname="Atribuir">
+        <source>Atribuir</source>
+        <target>Atribuir</target>
+      </trans-unit>
+      <trans-unit id="a4d3b161ce1309df1c4e25df28694b7b" resname="Submit">
+        <source>Submit</source>
+        <target>Enviar</target>
+      </trans-unit>
+      <trans-unit id="e55f75a29310d7b60f7ac1d390c8ae42" resname="Module">
+        <source>Module</source>
+        <target>Módulo</target>
+      </trans-unit>
+      <trans-unit id="7dce122004969d56ae2e0245cb754d35" resname="Edit">
+        <source>Edit</source>
+        <target>Editar</target>
+      </trans-unit>
+      <trans-unit id="4ee29ca12c7d126654bd0e5275de6135" resname="List">
+        <source>List</source>
+        <target>Listar</target>
+      </trans-unit>
+      <trans-unit id="03c2e7e41ffc181a4e84080b4710e81e" resname="New">
+        <source>New</source>
+        <target>Novo</target>
+      </trans-unit>
+      <trans-unit id="1063e38cb53d94d386f21227fcd84717" resname="Remove">
+        <source>Remove</source>
+        <target>Remover</target>
+      </trans-unit>
+      <trans-unit id="b5c4cafcb4fcdbea263c9e892d3c7806" resname="Indicates required field">
+        <source>Indicates required field</source>
+        <target>Indica os campos obrigatórios</target>
+      </trans-unit>
+      <trans-unit id="13348442cc6a27032d2b4aa28b75a5d3" resname="Search">
+        <source>Search</source>
+        <target>Pesquisar</target>
+      </trans-unit>
+      <trans-unit id="801322095c363689f7620e0147e3fd14" resname="Order By">
+        <source>Order By</source>
+        <target>Ordenar por</target>
+      </trans-unit>
+      <trans-unit id="06df33001c1d7187fdd81ea1f5b277aa" resname="Actions">
+        <source>Actions</source>
+        <target>Ações</target>
+      </trans-unit>
+      <trans-unit id="498f79c4c5bbde77f1bceb6c86fd0f6d" resname="Show">
+        <source>Show</source>
+        <target>Detalhes</target>
+      </trans-unit>
+      <trans-unit id="087fb8756d4add87f2d162304ccd486b" resname="No records found">
+        <source>No records found</source>
+        <target>Registros não encontrados</target>
+      </trans-unit>
+      <trans-unit id="3ec365dd533ddb7ef3d1c111186ce872" resname="Details">
+        <source>Details</source>
+        <target>Detalhes</target>
+      </trans-unit>
+      <trans-unit id="490aa6e856ccf208a054389e47ce0d06" resname="Id">
+        <source>Id</source>
+        <target>Id</target>
+      </trans-unit>
+      <trans-unit id="49ee3087348e8d44e1feda1917443987" resname="Name">
+        <source>Name</source>
+        <target>Nome</target>
+      </trans-unit>
+      <trans-unit id="0c908588520b3ef787bce443fc2b507c" resname="Slug">
+        <source>Slug</source>
+        <target>Slug</target>
+      </trans-unit>
+      <trans-unit id="95dead35fe3dd649e369b9e4e29a96e9" resname="ModuleActions">
+        <source>ModuleActions</source>
+        <target>Ações dos Módulos</target>
+      </trans-unit>
+      <trans-unit id="29ee5d1ebcc033234938a5234f1f2075" resname="Identifier">
+        <source>Identifier</source>
+        <target>Identificador</target>
+      </trans-unit>
+      <trans-unit id="c456dbb9341cabc17efd22bf2107aad3" resname="Createdat">
+        <source>Createdat</source>
+        <target>Criado em</target>
+      </trans-unit>
+      <trans-unit id="70b90fd674bbdd8619c72c88d3275655" resname="Updatedat">
+        <source>Updatedat</source>
+        <target>Atualizado em</target>
+      </trans-unit>
+      <trans-unit id="d2b830dc8c05386265cf573840f4e741" resname="Module Actions">
+        <source>Module Actions</source>
+        <target>Ações dos Módulos</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
