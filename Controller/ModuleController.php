@@ -31,6 +31,12 @@ class ModuleController extends AdminController
      */
     public function indexAction($page, $sort, $direction)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('module', 'INDEX')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $breadcumbs = $this->container->get('bacon_breadcrumbs');
 
         $breadcumbs->addItem([
@@ -76,6 +82,12 @@ class ModuleController extends AdminController
     */
     public function searchAction(Request $request)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('module', 'INDEX')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $this->get('session')->remove('module_search_session');
 
         if ($request->getMethod() === Request::METHOD_POST) {
@@ -102,6 +114,12 @@ class ModuleController extends AdminController
      */
     public function newAction(Request $request)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('module', 'NEW')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $breadcumbs = $this->container->get('bacon_breadcrumbs');
 
         $breadcumbs->addItem([
@@ -145,6 +163,12 @@ class ModuleController extends AdminController
      */
     public function editAction(Request $request, Module $entity)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('module', 'EDIT')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $breadcumbs = $this->container->get('bacon_breadcrumbs');
 
         $breadcumbs->addItem([
@@ -191,6 +215,12 @@ class ModuleController extends AdminController
      */
     public function showAction(Request $request, Module $entity)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('module', 'SHOW')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $breadcumbs = $this->container->get('bacon_breadcrumbs');
 
         $breadcumbs->addItem([
@@ -219,6 +249,12 @@ class ModuleController extends AdminController
      */
     public function deleteAction(Module $entity)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('module', 'DELETE')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $handler = new ModuleFormHandler(
             $this->createDeleteForm('module_delete', $entity),
             $this->get('doctrine')->getManager(),

@@ -2,10 +2,12 @@
 
 namespace Bacon\Bundle\AclBundle\Repository;
 
+use Bacon\Bundle\AclBundle\Helper\UtilsHelper;
 use FOS\UserBundle\Model\GroupInterface;
 
 /**
  * Class HasAuthorationRepository
+ *
  * @package Bacon\Bundle\AclBundle\Repository
  * @author Adan Felipe Medeiros <adan.grg@gmail.com>
  * @version 1.0
@@ -13,10 +15,10 @@ use FOS\UserBundle\Model\GroupInterface;
 trait HasAuthorationRepository
 {
     /**
-     * @param $module
-     * @param $action
+     * @param string         $module
+     * @param string         $action
      * @param GroupInterface $group
-     * 
+     *
      * @return mixed
      */
     public function hasAuthorization($module, $action, GroupInterface $group)
@@ -30,7 +32,7 @@ trait HasAuthorationRepository
         $queryBuilder->innerJoin('mag.moduleActions', 'ma');
 
         $queryBuilder->andWhere(
-            $queryBuilder->expr()->eq('m.name', ':module')
+            $queryBuilder->expr()->eq('m.slug', ':module')
         );
 
         $queryBuilder->andWhere(
@@ -50,6 +52,13 @@ trait HasAuthorationRepository
         $queryBuilder->setParameter('group', $group);
         $queryBuilder->setParameter('enabled', true);
 
-        return $queryBuilder->getQuery()->getOneOrNullResult();
+        $helper = new UtilsHelper();
+        $resultCacheId = $helper->generateNameForCache($module, $action, $group);
+
+        return $queryBuilder
+            ->getQuery()
+            ->useResultCache(true, 3600, $resultCacheId)
+            ->getOneOrNullResult()
+        ;
     }
 }

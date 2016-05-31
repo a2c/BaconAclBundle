@@ -16,10 +16,12 @@
             <section class="row">
                 <div class="col-lg-4">
                     <div class="btn-group">
-                        <a href="{{ path('module_actions_new') }}" class="btn btn-success">
-                            <span class="glyphicon glyphicon-plus"></span>
-                            {{ 'New'|trans }}
-                        </a>
+                        {% if (bacon_acl_authorization('module-actions', 'NEW') == true) %}
+                            <a href="{{ path('module_actions_new') }}" class="btn btn-success">
+                                <span class="glyphicon glyphicon-plus"></span>
+                                {{ 'New'|trans }}
+                            </a>
+                        {% endif %}
                         <a href="#modalSearch" class="btn btn-default" data-toggle="modal">
                             <span class="glyphicon glyphicon-search"></span>
                             {{ 'Search'|trans }}
@@ -51,21 +53,27 @@
                                     <td>{{ entity.name }}</td>
                                     <td>{{ entity.identifier }}</td>
                                     <td>
-                                        <a href="{{ path('module_actions_show', { 'id': entity.id }) }}" class="btn btn-sm btn-default" data-original-title="{{ 'Show'|trans }}">
-                                            <span class="glyphicon glyphicon-eye-open"></span>
-                                        </a>
-                                        <a href="{{ path('module_actions_edit', { 'id': entity.id }) }}" class="btn btn-sm btn-default" data-original-title="{{ 'Edit'|trans }}">
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                        </a>
-                                         <button type="button" class="btn btn-sm btn-danger" title="" data-target="#modalDelete{{ entity.id }}" data-toggle="modal" data-original-title="{{ 'Remove'|trans }}">
-                                            <span class="glyphicon glyphicon-remove"></span>
-                                        </button>
-                                        {% embed 'BaconCoreBundle:partial:modalDelete.html.twig' with {
-                                            form: form_delete,
-                                            route: 'module_actions_delete',
-                                            id: entity.id
-                                        } %}
-                                        {% endembed %}
+                                        {% if (bacon_acl_authorization('module-actions', 'SHOW') == true) %}
+                                            <a href="{{ path('module_actions_show', { 'id': entity.id }) }}" class="btn btn-sm btn-default" data-original-title="{{ 'Show'|trans }}">
+                                                <span class="glyphicon glyphicon-eye-open"></span>
+                                            </a>
+                                        {% endif %}
+                                        {% if (bacon_acl_authorization('module-actions', 'EDIT') == true) %}
+                                            <a href="{{ path('module_actions_edit', { 'id': entity.id }) }}" class="btn btn-sm btn-default" data-original-title="{{ 'Edit'|trans }}">
+                                                <span class="glyphicon glyphicon-pencil"></span>
+                                            </a>
+                                        {% endif %}
+                                        {% if (bacon_acl_authorization('module-actions', 'DELETE') == true) %}
+                                            <button type="button" class="btn btn-sm btn-danger" title="" data-target="#modalDelete{{ entity.id }}" data-toggle="modal" data-original-title="{{ 'Remove'|trans }}">
+                                                <span class="glyphicon glyphicon-remove"></span>
+                                            </button>
+                                            {% embed 'BaconCoreBundle:partial:modalDelete.html.twig' with {
+                                                form: form_delete,
+                                                route: 'module_actions_delete',
+                                                id: entity.id
+                                            } %}
+                                            {% endembed %}
+                                        {% endif %}
                                     </td>
                                 </tr>
                             {% endfor %}

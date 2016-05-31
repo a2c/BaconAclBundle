@@ -28,6 +28,12 @@ class AclController extends AdminController
      */
     public function indexAction($groupName)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('acl', 'ACL')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $groupClassName     =   $this->getParameter('bacon_acl.group_class');
         $moduleClassName    =   $this->getParameter('bacon_acl.entities.module_class');
 
@@ -49,6 +55,12 @@ class AclController extends AdminController
      */
     public function postAclAction(Request $request)
     {
+        $acl = $this->get('bacon_acl.service.authorization');
+
+        if (!$acl->authorize('acl', 'ACL')) {
+            throw $this->createAccessDeniedException();
+        }
+
         $data = $request->request->all();
 
         $groupNameClass                 =   $this->getParameter('bacon_acl.group_class');
@@ -57,6 +69,10 @@ class AclController extends AdminController
         $moduleActionsGroupNameClass    =   $this->getParameter('bacon_acl.entities.module_actions_group');
 
         if (isset($data['group_id'])) {
+
+            $cache = $this->get('doctrine.orm.default_result_cache');
+            $cache->deleteAll();
+
             $group = $this->getDoctrine()->getRepository($groupNameClass)->find($data['group_id']);
 
             $acls  = $this
