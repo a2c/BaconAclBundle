@@ -85,7 +85,7 @@ class AuthorizationService
      */
     public function getUser()
     {
-        if (is_null($this->user)) {
+        if (!is_null($this->user)) {
             $this->user = $this->tokenStorage->getToken()->getUser();
         }
 
@@ -97,11 +97,13 @@ class AuthorizationService
      */
     public function authorize($module, $action)
     {
-        $groups =   $this->getUser()->getGroups();
+        if (!is_null($this->getUser())) {
+            $groups =   $this->getUser()->getGroups();
 
-        foreach ($groups as $group) {
-            if (!is_null($this->getDoctrine()->getRepository($this->moduleActionsGroup)->hasAuthorization($module, $action, $group)))
-                return true;
+            foreach ($groups as $group) {
+                if (!is_null($this->getDoctrine()->getRepository($this->moduleActionsGroup)->hasAuthorization($module, $action, $group)))
+                    return true;
+            }
         }
 
         return false;
