@@ -2,6 +2,7 @@
 
 namespace Bacon\Bundle\AclBundle\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -145,6 +146,12 @@ class ModuleActionsController extends AdminController
 
         $form = $this->createForm($formTypeName, new $entityName());
 
+        $form->add('add_all_actions', CheckboxType::class, [
+            'required'  => false,
+            'label'     => 'Adicionar em todas as actions',
+            'mapped'    => false
+        ]);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
@@ -153,6 +160,8 @@ class ModuleActionsController extends AdminController
                 $this->getDoctrine()->getManager(),
                 $this->get('session')->getFlashBag()
             );
+
+            $handler->setRequest($request);
 
             if ($handler->save()) {
                 return $this->redirect($this->generateUrl('module_actions'));

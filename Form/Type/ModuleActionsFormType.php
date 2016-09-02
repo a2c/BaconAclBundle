@@ -3,6 +3,7 @@
 namespace Bacon\Bundle\AclBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -35,6 +36,7 @@ class ModuleActionsFormType extends AbstractType
                 ])
                 ->add('name')
                 ->add('identifier', null, [
+                    'required' => false,
                     'attr' => [
                         'placeholder' => 'Este campo deve conter as actions do modulo exemplo: INDEX, NEW, EDIT, SHOW, DELETE'
                     ]
